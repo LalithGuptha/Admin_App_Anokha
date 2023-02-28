@@ -1,3 +1,4 @@
+import 'package:admin_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -63,12 +64,16 @@ class _Login extends State<Login> {
                       height: 50,
                       width: 160,
                       child: ElevatedButton(
-                        onPressed: (){},
+                        onPressed: (){
+                          Navigator.of(context).pushReplacement(
+
+                              MaterialPageRoute(builder: (context) => HomeScreen()));
+                        },
                         child: Text("Login",style: TextStyle(
                             fontSize: 16
                         ),),
                         style: ElevatedButton.styleFrom(
-                          primary: HexColor("FF7F11"),
+                          backgroundColor: HexColor("FF7F11"),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.all(Radius.circular(16))
                           ),
@@ -91,7 +96,7 @@ class _Login extends State<Login> {
                             fontSize: 16
                         ),),
                         style: ElevatedButton.styleFrom(
-                          primary: HexColor("FF7F11"),
+                          backgroundColor: HexColor("FF7F11"),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.all(Radius.circular(16))
                           ),

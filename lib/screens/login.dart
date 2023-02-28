@@ -22,16 +22,22 @@ class _Login extends State<Login> {
           child:Column(
             children: [
               Container(
+                width: 400,
+                height: 350,
+                decoration: BoxDecoration(
+                  color: HexColor("002845"),
+                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(64),bottomRight: Radius.circular(64)),
+    ),
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 24),
+                    child: Image.asset('assets/logo.png'),
+                  ),
+    ),
+              Container(
                 margin: EdgeInsets.all(40),
                 child: Column(
                   children: [
-                    Padding(padding: EdgeInsets.only(top: 40),
-                      child: Align(
-                      alignment: Alignment.center,
-                      child: Image.asset('assets/logo.png'),
-                    ),),
-                    SizedBox(height: 80,),
-
+                    //SizedBox(height: 40,),
                     TextField(
                       controller: uncontroller,
                       decoration: InputDecoration(
@@ -70,7 +76,7 @@ class _Login extends State<Login> {
                       ),
                     ),
                     Padding(
-                        padding: EdgeInsets.only(top: 56),
+                        padding: EdgeInsets.only(top: 52),
                     child: Text("Not a registered user?",style: TextStyle(
                         fontSize: 18
                     ),)

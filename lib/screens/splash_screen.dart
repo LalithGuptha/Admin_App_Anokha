@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen>
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Text("Hi")
+        body: Image.asset('assets/logo.png')
       ),
     );
     }

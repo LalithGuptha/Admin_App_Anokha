@@ -28,7 +28,24 @@ class _SplashScreenState extends State<SplashScreen>
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Image.asset('assets/logo.png')
+        body: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Align(
+                alignment: Alignment.center,
+                child: Image.asset('assets/logo.png'),
+              ),
+              SizedBox(height: 32,),
+              Align(
+                alignment: Alignment.center,
+                child:Text("Anokha 2023",textAlign: TextAlign.center,style: TextStyle(fontSize: 40,fontWeight: FontWeight.w600),)
+                ,
+              ),
+            ],
+          ),
+        )
+
       ),
     );
     }

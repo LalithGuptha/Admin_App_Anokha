@@ -25,8 +25,11 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Center(child: Text("Anokha 2023")),
-        );
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: Text("Hi")
+      ),
+    );
     }
 }

@@ -1,4 +1,5 @@
 import 'package:admin_app/screens/home_screen.dart';
+import 'package:admin_app/screens/Signup.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -91,7 +92,10 @@ class _Login extends State<Login> {
                       height: 50,
                       width: 160,
                       child: ElevatedButton(
-                        onPressed: (){},
+                        onPressed: (){
+                          Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => const Signup()));
+                        },
                         child: Text("Register",style: TextStyle(
                             fontSize: 16
                         ),),

@@ -1,3 +1,4 @@
+import 'package:admin_app/screens/listofevents.dart';
 import 'package:flutter/material.dart';
 //import 'package:hexcolor/hexcolor.dart';
 import 'package:admin_app/screens/daysCont.dart';
@@ -77,7 +78,10 @@ class _HomeScreen extends State<HomeScreen> {
                   ),
                   SizedBox(),//to make space for the floating button
                   Material(
-                    child: IconButton(onPressed:(){},icon: Icon(Icons.event,size: 30,))
+                    child: IconButton(onPressed:(){
+                      Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const Manageevent()));
+                    },icon: Icon(Icons.event,size: 30,))
                   ),
                   SizedBox(width: 3,)
 

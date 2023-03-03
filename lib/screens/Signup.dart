@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -12,7 +10,7 @@ class Signup extends StatefulWidget {
 
 class _Signup extends State<Signup>
 {
-    var departments = ['CSE','ECE','MECH'];
+    var departments = ["AEE","AIE","ARE","CCE","CHE","CIE","CVI","CSE","CYS","EAC","ECE","EEE","EIE","ELC","MEE"];
     String dropdownvalue = 'CSE';
     @override
     Widget build(BuildContext context)
@@ -42,7 +40,7 @@ class _Signup extends State<Signup>
                   textAlign: TextAlign.center,
                 ) ,
               ),
-              SizedBox(height: 80,),
+              SizedBox(height: 8,),
               Padding(
                   padding: EdgeInsets.all(24),
                 child: Column(
@@ -90,24 +88,34 @@ class _Signup extends State<Signup>
                         )
 
                     ),
-                    SizedBox(height:40),
-                    DropdownButton(
-                      borderRadius: BorderRadius.circular(20),
-                      dropdownColor: HexColor("BEB7A4"),
-                      value: dropdownvalue,
-                        icon: const Icon(Icons.keyboard_arrow_down),
-                        items: departments.map((String departments){
-                          return DropdownMenuItem(value: departments,
-                          child: Text(departments),);
-                        }).toList(),
-                        onChanged: (String? newValue){
-                        setState(() {
-                          dropdownvalue = newValue!;
-                        });
-                        }
+                    SizedBox(height:32),
+                    Row(
+                      children: [
+                        SizedBox(width: 40,),
+                        Text("Department",style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                        ),),
+                        SizedBox(width: 40,),
+                        DropdownButton(
+                            borderRadius: BorderRadius.circular(20),
+                            dropdownColor: HexColor("BEB7A4"),
+                            value: dropdownvalue,
+                            icon: const Icon(Icons.keyboard_arrow_down),
+                            items: departments.map((String departments){
+                              return DropdownMenuItem(value: departments,
+                                child: Text(departments),);
+                            }).toList(),
+                            onChanged: (String? newValue){
+                              setState(() {
+                                dropdownvalue = newValue!;
+                              });
+                            }
 
+                        ),
+                      ],
                     ),
-                    SizedBox(height:40),
+                    SizedBox(height:32),
                     TextField(
                         decoration: InputDecoration(
                             icon: Icon(Icons.phone_android),

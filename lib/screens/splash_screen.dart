@@ -12,11 +12,22 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
+
+  late AnimationController controller;
+  late Animation sizeAnimation;
+  double customOpacity=0;
   @override
   void initState() {
     super.initState();
-
-    Timer(Duration(seconds: 4), () {
+    controller = AnimationController(vsync: this,duration: Duration(seconds: 2));
+    sizeAnimation = Tween<double>(begin: 100.0, end: 200.0,).animate(CurvedAnimation(parent: controller, curve: Curves.elasticIn));
+    controller.forward();
+    controller.addListener(() {
+      setState(() {
+        customOpacity=1;
+      });
+    });
+    Timer(Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
 
           MaterialPageRoute(builder: (context) => Login()));
@@ -28,25 +39,31 @@ class _SplashScreenState extends State<SplashScreen>
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Container(
+        body:Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Align(
-                alignment: Alignment.center,
-                child: Image.asset('assets/logo.png'),
+              Container(
+                height: sizeAnimation.value,
+                width: sizeAnimation.value,
+                child:
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Align(
+                      alignment: Alignment.center,
+                      child: Image.asset('assets/logo.png'),
+                    ),
+                  ],
+                ),
               ),
-              SizedBox(height: 32,),
-              Align(
-                alignment: Alignment.center,
-                child:Text("Anokha 2023",textAlign: TextAlign.center,style: TextStyle(fontSize: 40,fontWeight: FontWeight.w600),)
-                ,
-              ),
+              SizedBox(height: 40,),
+              AnimatedOpacity(opacity: customOpacity, duration: Duration(seconds: 2),
+                child:Text("Anokha",style: TextStyle(fontSize: 40,fontWeight: FontWeight.w700),) ,)
             ],
-          ),
+          )
         )
-
-      ),
+      )
     );
     }
 }

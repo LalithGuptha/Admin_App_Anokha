@@ -10,12 +10,19 @@ class Manageevent extends StatefulWidget{
 Widget card (String name, String venue,int regcount, BuildContext context){
   return Card(
     margin: EdgeInsets.fromLTRB(40, 40, 40, 0),
-    elevation: 4,
+    elevation: 8,
+    shadowColor: HexColor("BEB7A4"),
+
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(24)
+      borderRadius: BorderRadius.circular(24),
+      side: BorderSide(color:HexColor("002845"),width: 3)
     ),
     child: Column(
       children: [
+            ClipRRect(
+              child: Image.asset('assets/ml.jpg'),
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(24),topRight: Radius.circular(24)),
+            ),
         Row(
           children: [
             SizedBox(width: 16,height: 64,),
@@ -32,7 +39,7 @@ Widget card (String name, String venue,int regcount, BuildContext context){
         Row(
           children: [
             SizedBox(width: 16,),
-            Icon(Icons.date_range),
+            Icon(Icons.date_range,),
             SizedBox(width: 8,),
             Text("1-3-23"),
             SizedBox(width: 100,),
@@ -45,7 +52,7 @@ Widget card (String name, String venue,int regcount, BuildContext context){
         Row(
           children: [
             SizedBox(width: 16,),
-            Icon(Icons.location_pin),
+            Icon(Icons.location_pin,color: HexColor("FF3F00"),),
             SizedBox(width: 8,),
             Text(venue)
           ],
@@ -80,7 +87,7 @@ class _Manageevent extends State<Manageevent>
           child: Text("Created Events",style: TextStyle(
               fontSize: 32,
               fontWeight: FontWeight.w500,
-              color: HexColor("FF7F11")
+              color: HexColor("FF3F00")
           ),
             textAlign: TextAlign.center,
           ) ,),

@@ -13,7 +13,9 @@ class Temp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        title: 'Anokha 2023',
         home: SplashScreen()
-        );
+            );
   }
 }
+

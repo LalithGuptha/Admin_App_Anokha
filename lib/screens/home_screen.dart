@@ -1,4 +1,5 @@
 import 'package:admin_app/screens/listofevents.dart';
+import 'package:admin_app/screens/registeredusers.dart';
 import 'package:flutter/material.dart';
 //import 'package:hexcolor/hexcolor.dart';
 import 'package:admin_app/screens/daysCont.dart';
@@ -41,7 +42,10 @@ class _HomeScreen extends State<HomeScreen> {
               decoration:
                   BoxDecoration(borderRadius: BorderRadius.circular(10)),
               child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Registeredusers()));
+                },
                 icon: Icon(Icons.person),
                 color: HexColor(blue),
               )),

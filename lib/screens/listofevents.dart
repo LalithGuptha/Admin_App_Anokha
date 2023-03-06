@@ -18,7 +18,7 @@ Widget card (String name, String venue,int regcount, BuildContext context){
       //side: BorderSide(width: 3)
     ),
     child: Container(
-      margin: EdgeInsets.all(16),
+      margin: EdgeInsets.all(8),
       child: Row(
         children: [
           Container(

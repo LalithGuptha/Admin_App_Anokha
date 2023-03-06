@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:lottie/lottie.dart';
 
 class Manageevent extends StatefulWidget{
   const Manageevent({Key? key}): super(key: key);
@@ -25,8 +26,8 @@ Widget card (String name, String venue,int regcount, BuildContext context){
             height: 100,
             width: 80,
             child: ClipRRect(
-              child: Image.asset('assets/ml.jpg',fit: BoxFit.fill,),
-              borderRadius: BorderRadius.all(Radius.circular(16)),
+              child: Lottie.asset('assets/animations/ai.json'),
+              //borderRadius: BorderRadius.all(Radius.circular(16)),
             ),
           ),
           SizedBox(width: 8,),

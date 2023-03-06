@@ -1,10 +1,10 @@
 import 'package:admin_app/screens/listofevents.dart';
-import 'package:admin_app/screens/registeredusers.dart';
 import 'package:flutter/material.dart';
 //import 'package:hexcolor/hexcolor.dart';
 import 'package:admin_app/screens/daysCont.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:admin_app/screens/create_event_page.dart';
+import 'package:admin_app/screens/profile.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -44,7 +44,7 @@ class _HomeScreen extends State<HomeScreen> {
               child: IconButton(
                 onPressed: () {
                   Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Registeredusers()));
+                      MaterialPageRoute(builder: (context) => const ProfilePage()));
                 },
                 icon: Icon(Icons.person),
                 color: HexColor(blue),

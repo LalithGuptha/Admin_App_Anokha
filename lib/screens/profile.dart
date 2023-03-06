@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -8,9 +9,9 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  String _username = 'John Doe';
-  String _email = 'johndoe@example.com';
-  String _department = 'Engineering';
+  String _username = 'Lallu';
+  String _email = 'lallu@example.com';
+  String _department = 'CSE';
 
   @override
   Widget build(BuildContext context) {
@@ -78,6 +79,13 @@ class _ProfilePageState extends State<ProfilePage> {
               },
               child: Text('Logout'),
             ),
+            SizedBox(height: 60,),
+            Container(
+              margin: EdgeInsets.only(left: 80),
+              child:Lottie.asset(
+                'assets/animations/9404-lotus-animation.json',
+                fit: BoxFit.contain,)
+              ),
           ],
         ),
       ),

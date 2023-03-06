@@ -2,6 +2,8 @@ import 'package:admin_app/screens/listofevents.dart';
 import 'package:flutter/material.dart';
 //import 'package:hexcolor/hexcolor.dart';
 import 'package:admin_app/screens/daysCont.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'package:admin_app/screens/create_event_page.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -12,7 +14,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreen extends State<HomeScreen> {
   //int _currentIndex = 0;
-
+  final blue="002845";
+  final white="FFFFFC";
+  final grey="BEB7A4";
+  final orange="FF7F11";
+  final red="FF3F00";
   @override
   Widget build(BuildContext context) {
     final txtTheme = Theme.of(context).textTheme;
@@ -20,9 +26,9 @@ class _HomeScreen extends State<HomeScreen> {
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
-        leading: const Icon(
+        leading:  Icon(
           Icons.menu,
-          color: Colors.black,
+          color: HexColor(blue),
         ),
         title: Text("Anokha 2023",
             style: Theme.of(context).textTheme.headlineSmall),
@@ -37,7 +43,7 @@ class _HomeScreen extends State<HomeScreen> {
               child: IconButton(
                 onPressed: () {},
                 icon: Icon(Icons.person),
-                color: Colors.black,
+                color: HexColor(blue),
               )),
         ],
       ),
@@ -51,7 +57,7 @@ class _HomeScreen extends State<HomeScreen> {
               space,
               Text("Select the Day and Press the Add button to",style: txtTheme.bodyLarge,),
               space,
-              Text("To Create an Event",style: txtTheme.headlineLarge,)
+              Text("Create an Event",style: txtTheme.headlineLarge,)
 
             ],
           ),
@@ -59,7 +65,10 @@ class _HomeScreen extends State<HomeScreen> {
       ),
           floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
           floatingActionButton: FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const CreateEvent()));
+            },
             child: Icon(Icons.add),
           ),
           bottomNavigationBar: BottomAppBar(

@@ -79,6 +79,13 @@ class _ProfilePageState extends State<ProfilePage> {
               },
               child: Text('Logout'),
             ),
+            SizedBox(height: 60,),
+            Container(
+              margin: EdgeInsets.only(left: 80),
+              child:Lottie.asset(
+                'assets/animations/9404-lotus-animation.json',
+                fit: BoxFit.contain,)
+              ),
           ],
         ),
       ),

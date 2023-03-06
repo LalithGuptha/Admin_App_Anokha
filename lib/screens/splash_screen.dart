@@ -57,9 +57,9 @@ class _SplashScreenState extends State<SplashScreen>
                   ],
                 ),
               ),
-              SizedBox(height: 40,),
+              SizedBox(height: 48,),
               AnimatedOpacity(opacity: customOpacity, duration: Duration(seconds: 2),
-                child:Text("Anokha",style: TextStyle(fontSize: 40,fontWeight: FontWeight.w700),) ,)
+                child:Text("Anokha",style: TextStyle(fontSize: 35,fontWeight: FontWeight.w700),) ,)
             ],
           )
         )

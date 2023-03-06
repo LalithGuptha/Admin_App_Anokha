@@ -51,7 +51,7 @@ class _Login extends State<Login> {
                     ),
                     SizedBox(height: 40),
                     TextField(
-                      controller: uncontroller,
+                      controller: pcontroller,
                       obscureText: true,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(

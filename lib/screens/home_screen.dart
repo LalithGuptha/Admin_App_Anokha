@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:admin_app/screens/daysCont.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:admin_app/screens/create_event_page.dart';
-import 'package:admin_app/screens/profile.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -42,10 +41,7 @@ class _HomeScreen extends State<HomeScreen> {
               decoration:
                   BoxDecoration(borderRadius: BorderRadius.circular(10)),
               child: IconButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const ProfilePage()));
-                },
+                onPressed: () {},
                 icon: Icon(Icons.person),
                 color: HexColor(blue),
               )),

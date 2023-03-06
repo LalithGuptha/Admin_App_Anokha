@@ -14,58 +14,55 @@ Widget card (String name, String venue,int regcount, BuildContext context){
     shadowColor: HexColor("BEB7A4"),
 
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(24),
-      side: BorderSide(color:HexColor("002845"),width: 3)
+      borderRadius: BorderRadius.circular(16),
+      //side: BorderSide(width: 3)
     ),
-    child: Column(
-      children: [
-            ClipRRect(
-              child: Image.asset('assets/ml.jpg'),
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(24),topRight: Radius.circular(24)),
+    child: Container(
+      margin: EdgeInsets.all(16),
+      child: Row(
+        children: [
+          Container(
+            height: 100,
+            width: 80,
+            child: ClipRRect(
+              child: Image.asset('assets/ml.jpg',fit: BoxFit.fill,),
+              borderRadius: BorderRadius.all(Radius.circular(16)),
             ),
-        Row(
-          children: [
-            SizedBox(width: 16,height: 64,),
-            Text(name,style: TextStyle(fontSize: 24),),
-            SizedBox(width: 70,),
-            new Spacer(),
-            Icon(Icons.person,),
-            SizedBox(width: 8,),
-            Text(regcount.toString()),
-            SizedBox(width: 16)
-          ],
-        ),
-        SizedBox(height: 16,),
-        Row(
-          children: [
-            SizedBox(width: 16,),
-            Icon(Icons.date_range,),
-            SizedBox(width: 8,),
-            Text("1-3-23"),
-            SizedBox(width: 100,),
-            Icon(Icons.access_time_outlined,),
-            SizedBox(width: 8,),
-            Text("12:00 PM")
-          ],
-        ),
-        SizedBox(height: 16,),
-        Row(
-          children: [
-            SizedBox(width: 16,),
-            Icon(Icons.location_pin,color: HexColor("FF3F00"),),
-            SizedBox(width: 8,),
-            Text(venue)
-          ],
-        ),
-        SizedBox(height: 40,)
-
-      ],
-    ),
+          ),
+          SizedBox(width: 8,),
+          Container(
+            margin: EdgeInsets.only(left: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                    children:[
+                      Text("Sat, Apr 1",),
+                      SizedBox(width:40 ,),
+                      Text("12:00 PM")
+                    ]
+                ),
+                SizedBox(height: 10,),
+                Text(name,style: TextStyle(fontSize:24,fontWeight: FontWeight.w500),),
+                SizedBox(height: 10,),
+                Row(
+                  children: [
+                    Icon(Icons.location_pin,color: HexColor("FF3F00"),),
+                    SizedBox(width: 8,),
+                    Text(venue)
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    )
   );
 }
 class _Manageevent extends State<Manageevent>
 {
-  var name=["ML workshop","CTF","Hackathon"];
+  var name=["ML Workshop","CTF","Hackathon"];
   var venue=["AB1","AB2","AB3"];
   var regcount=[10,20,30];
   @override

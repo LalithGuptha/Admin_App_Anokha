@@ -15,7 +15,6 @@ class _Signup extends State<Signup>
     @override
     Widget build(BuildContext context)
     {
-
       return MaterialApp(
         home: Scaffold(
           appBar:AppBar(
@@ -139,7 +138,7 @@ class _Signup extends State<Signup>
                             fontSize: 16
                         ),),
                         style: ElevatedButton.styleFrom(
-                          primary: HexColor("FF7F11"),
+                          backgroundColor: HexColor("FF7F11"),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.all(Radius.circular(16))
                           ),

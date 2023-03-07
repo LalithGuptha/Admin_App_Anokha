@@ -12,6 +12,7 @@ class Manageevent extends StatefulWidget{
 }
 
 Widget card (list, BuildContext context){
+  String date = list["date"];
   return Card(
     margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
     elevation: 8,
@@ -41,7 +42,7 @@ Widget card (list, BuildContext context){
               children: [
                 Row(
                     children:[
-                      Text(list["date"],),
+                      Text(date.split('T')[0],),
                       SizedBox(width:40 ,),
                       //Text(list["startTime"])
                     ]

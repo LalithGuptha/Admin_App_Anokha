@@ -14,6 +14,7 @@ class _Login extends State<Login> {
 
   TextEditingController uncontroller = TextEditingController();
   TextEditingController pcontroller = TextEditingController();
+  final _formkey = GlobalKey<FormState>();
 
   Widget build(BuildContext context){
 
@@ -37,79 +38,98 @@ class _Login extends State<Login> {
     ),
               Container(
                 margin: EdgeInsets.all(40),
-                child: Column(
-                  children: [
-                    //SizedBox(height: 40,),
-                    TextField(
-                      controller: uncontroller,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(16)),
-                        labelText: "Username",
-                        hintText: "Username"
-                      ),
-                    ),
-                    SizedBox(height: 40),
-                    TextField(
-                      controller: pcontroller,
-                      obscureText: true,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(16)),
-                          labelText: "Password",
-                          hintText: "Password"
-                      ),
-                    ),
-                    SizedBox(height: 32,),
-                    SizedBox(
-                      height: 50,
-                      width: 160,
-                      child: ElevatedButton(
-                        onPressed: (){
-                          Navigator.of(context).pushReplacement(
+                child: Form(
+                  key: _formkey,
+                 child: Column(
+                   children: [
+                     //SizedBox(height: 40,),
+                     TextFormField(
+                       validator: (value){
+                         if (value==null || value.isEmpty)
+                           {
+                             return "Enter a Username";
+                           }
+                       },
+                       controller: uncontroller,
+                       decoration: InputDecoration(
+                           border: OutlineInputBorder(
+                               borderRadius: BorderRadius.circular(16)),
+                           labelText: "Username",
+                           hintText: "Username"
+                       ),
+                     ),
+                     SizedBox(height: 40),
+                     TextFormField(
+                       validator: (value){
+                         if (value == null || value.isEmpty)
+                           {
+                                return 'Enter a password';
+                           }
+                       },
+                       controller: pcontroller,
+                       obscureText: true,
+                       decoration: InputDecoration(
+                           border: OutlineInputBorder(
+                               borderRadius: BorderRadius.circular(16)),
+                           labelText: "Password",
+                           hintText: "Password"
+                       ),
 
-                              MaterialPageRoute(builder: (context) => HomeScreen()));
-                        },
-                        child: Text("Login",style: TextStyle(
-                            fontSize: 16
-                        ),),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: HexColor("FF7F11"),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(16))
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                        padding: EdgeInsets.only(top: 52),
-                    child: Text("Not a registered user?",style: TextStyle(
-                        fontSize: 18
-                    ),)
-                    ),
-                    SizedBox(height: 24,),
-                    SizedBox(
-                      height: 50,
-                      width: 160,
-                      child: ElevatedButton(
-                        onPressed: (){
-                          Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => const Signup()));
-                        },
-                        child: Text("Register",style: TextStyle(
-                            fontSize: 16
-                        ),),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: HexColor("FF7F11"),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(16))
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                     ),
+                     SizedBox(height: 32,),
+                     SizedBox(
+                       height: 50,
+                       width: 160,
+                       child: ElevatedButton(
+                         onPressed: (){
 
-                ),
+                           if (_formkey.currentState!.validate()){
+                             Navigator.of(context).pushReplacement(
+
+                                 MaterialPageRoute(builder: (context) => HomeScreen()));
+                           }
+                         },
+                         child: Text("Login",style: TextStyle(
+                             fontSize: 16
+                         ),),
+                         style: ElevatedButton.styleFrom(
+                           backgroundColor: HexColor("FF7F11"),
+                           shape: RoundedRectangleBorder(
+                               borderRadius: BorderRadius.all(Radius.circular(16))
+                           ),
+                         ),
+                       ),
+                     ),
+                     // Padding(
+                     //     padding: EdgeInsets.only(top: 52),
+                     // child: Text("Not a registered user?",style: TextStyle(
+                     //     fontSize: 18
+                     // ),)
+                     // ),
+                     // SizedBox(height: 24,),
+                     // SizedBox(
+                     //   height: 50,
+                     //   width: 160,
+                     //   child: ElevatedButton(
+                     //     onPressed: (){
+                     //       Navigator.push(context,
+                     //       MaterialPageRoute(builder: (context) => const Signup()));
+                     //     },
+                     //     child: Text("Register",style: TextStyle(
+                     //         fontSize: 16
+                     //     ),),
+                     //     style: ElevatedButton.styleFrom(
+                     //       backgroundColor: HexColor("FF7F11"),
+                     //       shape: RoundedRectangleBorder(
+                     //           borderRadius: BorderRadius.all(Radius.circular(16))
+                     //       ),
+                     //     ),
+                     //   ),
+                     // ),
+                   ],
+
+                 ),
+                )
               )
             ],
           )

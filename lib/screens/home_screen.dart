@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:admin_app/screens/listofevents.dart';
 import 'package:flutter/material.dart';
 //import 'package:hexcolor/hexcolor.dart';
@@ -29,13 +31,12 @@ class _HomeScreen extends State<HomeScreen> {
       appBar: AppBar(
         leading:  Icon(
           Icons.menu,
-          color: HexColor(blue),
         ),
+          backgroundColor: HexColor("002845"),
         title: Text("Anokha 2023",
-            style: Theme.of(context).textTheme.headlineSmall),
+            style: TextStyle(color: HexColor(white),fontWeight: FontWeight.w400),),
         centerTitle: true,
         elevation: 0,
-        backgroundColor: Colors.transparent,
         actions: [
           Container(
               margin: const EdgeInsets.only(right: 20, top: 7),
@@ -47,7 +48,7 @@ class _HomeScreen extends State<HomeScreen> {
                       MaterialPageRoute(builder: (context) => const ProfilePage()));
                 },
                 icon: Icon(Icons.person),
-                color: HexColor(blue),
+                color: HexColor(white),
               )),
         ],
       ),
@@ -74,8 +75,11 @@ class _HomeScreen extends State<HomeScreen> {
                   MaterialPageRoute(builder: (context) => const CreateEvent()));
             },
             child: Icon(Icons.add),
+            backgroundColor: HexColor(orange),
+
           ),
           bottomNavigationBar: BottomAppBar(
+            color: HexColor(blue),
             shape: const CircularNotchedRectangle(),
             notchMargin: 10,
             child: SizedBox(
@@ -86,15 +90,20 @@ class _HomeScreen extends State<HomeScreen> {
                 children: <Widget>[
                   SizedBox(width: 3),
                   Material(
-                    child:IconButton(onPressed:(){},icon: Icon(Icons.home,size: 30,))
+                    color: HexColor(blue),
+                    child:IconButton(onPressed:(){},icon: Icon(Icons.home,size: 30,),color: HexColor(white))
             ,
                   ),
                   SizedBox(),//to make space for the floating button
                   Material(
+                    color: HexColor(blue),
                     child: IconButton(onPressed:(){
                       Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const Manageevent()));
-                    },icon: Icon(Icons.event,size: 30,))
+                    },
+                        icon: Icon(Icons.event,size: 30,),
+                      color: HexColor(white),
+                    )
                   ),
                   SizedBox(width: 3,)
 

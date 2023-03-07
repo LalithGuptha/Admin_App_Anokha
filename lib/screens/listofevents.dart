@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:lottie/lottie.dart';
+import 'dart:async';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class Manageevent extends StatefulWidget{
   const Manageevent({Key? key}): super(key: key);
@@ -8,9 +11,9 @@ class Manageevent extends StatefulWidget{
   State<Manageevent> createState() => _Manageevent();
 }
 
-Widget card (String name, String venue,int regcount, BuildContext context){
+Widget card (list, BuildContext context){
   return Card(
-    margin: EdgeInsets.fromLTRB(40, 40, 40, 0),
+    margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
     elevation: 8,
     shadowColor: HexColor("BEB7A4"),
 
@@ -38,19 +41,19 @@ Widget card (String name, String venue,int regcount, BuildContext context){
               children: [
                 Row(
                     children:[
-                      Text("Sat, Apr 1",),
+                      Text(list["date"],),
                       SizedBox(width:40 ,),
-                      Text("12:00 PM")
+                      //Text(list["startTime"])
                     ]
                 ),
                 SizedBox(height: 10,),
-                Text(name,style: TextStyle(fontSize:24,fontWeight: FontWeight.w500),),
+                Text(list["name"],style: TextStyle(fontSize:24,fontWeight: FontWeight.w500),),
                 SizedBox(height: 10,),
                 Row(
                   children: [
                     Icon(Icons.location_pin,color: HexColor("FF3F00"),),
                     SizedBox(width: 8,),
-                    Text(venue)
+                    Text(list["venue"])
                   ],
                 ),
               ],
@@ -61,46 +64,78 @@ Widget card (String name, String venue,int regcount, BuildContext context){
     )
   );
 }
-class _Manageevent extends State<Manageevent>
-{
-  var name=["ML Workshop","CTF","Hackathon"];
-  var venue=["AB1","AB2","AB3"];
-  var regcount=[10,20,30];
+class _Manageevent extends State<Manageevent> {
+  //var name=["ML Workshop","CTF","Hackathon"];
+  //var venue=["AB1","AB2","AB3"];
+  //var regcount=[10,20,30];
+  Future<List> getData() async {
+    final response = await http.get(
+        Uri.parse("http://192.168.193.228:3000/api/events/all"));
+
+    return json.decode(response.body);
+  }
+
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return MaterialApp(
-    home: Scaffold(
-      appBar:AppBar(
-        backgroundColor: HexColor("002845"),
-        leading: IconButton(
-          onPressed:(){
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.arrow_back),),
+      home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: HexColor("002845"),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back),),
+        ),
+        body: FutureBuilder<List>(
+            future: getData(),
+            builder: (context, ss) {
+              if (ss.hasError) {
+                print("error");
+              }
+              if (ss.hasData) {
+                return Items(list: ss.data);
+              } else {
+                return CircularProgressIndicator();
+              }
+            }),
+
       ),
-      body: Column(
-        children: [
-          Padding(
-              padding: EdgeInsets.only(top: 24),
-          child: Text("Created Events",style: TextStyle(
+    );
+  }
+}
+
+class Items extends StatefulWidget{
+    List? list;
+    Items({Key? key,required this.list}): super(key: key);
+    @override
+    State<Items> createState() => _Items();
+    }
+
+class _Items extends State<Items> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.only(top: 24),
+          child: Text("Created Events", style: TextStyle(
               fontSize: 32,
               fontWeight: FontWeight.w500,
               color: HexColor("FF3F00")
           ),
             textAlign: TextAlign.center,
-          ) ,),
-          Expanded(
-            child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: name.length,
-                itemBuilder: (BuildContext context, int index){
-                  return card(name[index], venue[index], regcount[index], context);
-                }),
-          )
-        ],
-      )
-
-    ),
+          ),),
+        Expanded(
+          child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: widget.list == null ? 0 : widget.list!.length,
+              itemBuilder: (BuildContext context, i) {
+                return card(widget.list![i], context);
+              }),
+        )
+      ],
     );
-}
+  }
+
 }

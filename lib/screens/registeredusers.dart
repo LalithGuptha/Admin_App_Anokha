@@ -30,9 +30,14 @@ Widget card (String name, String venue,int regcount, BuildContext context){
                   backgroundImage: AssetImage('assets/profile.png') ,
                 ),
                 SizedBox(height: 10,),
-                Text("Anokha123",style: TextStyle(color: Colors.black)),
+
               ],
             ),
+            SizedBox(width: 32,),
+            Text("Anokha123",style: TextStyle(color: Colors.black)),
+            Spacer(),
+            IconButton(onPressed: (){}, icon: Icon(Icons.payments_outlined)),
+            SizedBox(width: 16,)
 
           ],
         ),
@@ -42,9 +47,9 @@ Widget card (String name, String venue,int regcount, BuildContext context){
 }
 class _Registeredusers extends State<Registeredusers>
 {
-  var name=["ML workshop","CTF","Hackathon","Singing"];
-  var venue=["AB1","AB2","AB3","AB2"];
-  var regcount=[10,20,30,40];
+  var name=["ML workshop","CTF","Hackathon","Singing","Code-a-thon"];
+  var venue=["AB1","AB2","AB3","AB2","AB1"];
+  var regcount=[10,20,30,40,20];
   @override
   Widget build(BuildContext context){
     return MaterialApp(
@@ -57,35 +62,31 @@ class _Registeredusers extends State<Registeredusers>
               },
               icon: Icon(Icons.arrow_back),),
           ),
-          body: Column(
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.only(top: 24),
-                  child: Text("Registered Users",style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.w500,
-                      color: HexColor("FF3F00")
-                  ),
-                    textAlign: TextAlign.center,
-                  ) ,),
-              ),
-              SizedBox(height: 20,),
-              Container(
-                margin: EdgeInsets.all(16),
-                child: Expanded(
-                  child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: name.length,
-                      itemBuilder: (BuildContext context, int index){
-                        return card(name[index], venue[index], regcount[index], context);
-                      }),
-                ),
+          body:
+              Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: 24),
+                    child: Text("Registered Users", style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.w500,
+                        color: HexColor("FF3F00")
+                    ),
+                      textAlign: TextAlign.center,
+                    ),),
+                  SizedBox(height: 40,),
+                  Expanded(
+                    child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: name.length,
+                        itemBuilder: (BuildContext context, index) {
+                          return card(name[index], venue[index], regcount[index], context);
+                        }),
+                  )
+                ],
               )
-            ],
-          )
+          ),
 
-      ),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:admin_app/screens/listofevents.dart';
+import 'package:admin_app/screens/registeredusers.dart';
 import 'package:flutter/material.dart';
 //import 'package:hexcolor/hexcolor.dart';
 import 'package:admin_app/screens/daysCont.dart';
@@ -45,7 +46,7 @@ class _HomeScreen extends State<HomeScreen> {
               child: IconButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const ProfilePage()));
+                      MaterialPageRoute(builder: (context) => const Registeredusers()));
                 },
                 icon: Icon(Icons.person),
                 color: HexColor(white),

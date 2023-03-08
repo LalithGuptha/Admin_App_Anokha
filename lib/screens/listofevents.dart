@@ -97,7 +97,7 @@ class _Manageevent extends State<Manageevent> {
               if (ss.hasData) {
                 return Items(list: ss.data);
               } else {
-                return CircularProgressIndicator();
+                return Center(child: CircularProgressIndicator(),);
               }
             }),
 

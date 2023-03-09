@@ -59,11 +59,13 @@ class _HomeScreen extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Text("Pick a Day",style: txtTheme.bodyLarge,),
               ButtonContainer(),
               space,
-              Text("Select the Day and Press the Add button to",style: txtTheme.bodyLarge,),
-              space,
-              Text("Create an Event",style: txtTheme.headlineLarge,)
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Text("Create an Event",style: txtTheme.headlineLarge,),
+              )
 
             ],
           ),

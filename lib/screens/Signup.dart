@@ -12,13 +12,18 @@ class _Signup extends State<Signup>
 {
     var departments = ["AEE","AIE","ARE","CCE","CHE","CIE","CVI","CSE","CYS","EAC","ECE","EEE","EIE","ELC","MEE"];
     String dropdownvalue = 'CSE';
+    final blue="002845";
+    final white="FFFFFC";
+    final grey="BEB7A4";
+    final orange="FF7F11";
+    final red="FF3F00";
     @override
     Widget build(BuildContext context)
     {
       return MaterialApp(
         home: Scaffold(
           appBar:AppBar(
-            backgroundColor: HexColor("002845"),
+            backgroundColor: HexColor(blue),
             leading: IconButton(
               onPressed:(){
                 Navigator.pop(context);
@@ -34,7 +39,7 @@ class _Signup extends State<Signup>
                 child: Text("Signup",style: TextStyle(
                     fontSize: 40,
                     fontWeight: FontWeight.w500,
-                    color: HexColor("FF7F11")
+                    color: HexColor(orange)
                 ),
                   textAlign: TextAlign.center,
                 ) ,
@@ -98,7 +103,7 @@ class _Signup extends State<Signup>
                         SizedBox(width: 40,),
                         DropdownButton(
                             borderRadius: BorderRadius.circular(20),
-                            dropdownColor: HexColor("BEB7A4"),
+                            dropdownColor: HexColor(orange),
                             value: dropdownvalue,
                             icon: const Icon(Icons.keyboard_arrow_down),
                             items: departments.map((String departments){

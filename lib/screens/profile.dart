@@ -87,14 +87,16 @@ class _userProfState extends State<userProf> {
                           child: Column(
                             children: [
                               // Text("hey"), for logo
-
+                              Expanded(
+                                  flex: 1,
+                                  child: Image.asset('assets/anokha_2023_white_v2.png',width: 300,)),
                               SizedBox(
                                 height: MediaQuery.of(context).size.height * 0.028,
                               ),
                               Expanded(
                                 flex: 1,
                                 child: Text(
-                                  "PASSPORT",
+                                  "Name",
                                   style: TextStyle(
                                       fontSize: 30.0,
                                       color:
@@ -102,6 +104,18 @@ class _userProfState extends State<userProf> {
                                       fontFamily: 'Roboto'),
                                 ),
                               ),
+                              Expanded(
+                                flex: 1,
+                                child: Text(
+                                  "Admin Id",
+                                  style: TextStyle(
+                                      fontSize: 30.0,
+                                      color:
+                                      Color(0xFFFFFFFC),
+                                      fontFamily: 'Roboto'),
+                                ),
+                              ),
+
                             ],
                           ),
                         ),

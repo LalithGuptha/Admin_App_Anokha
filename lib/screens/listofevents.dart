@@ -1,3 +1,4 @@
+import 'package:admin_app/screens/home_screen.dart';
 import 'package:admin_app/screens/registeredusers.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -137,7 +138,8 @@ class _Manageevent extends State<Manageevent> {
           backgroundColor: HexColor("002845"),
           leading: IconButton(
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()));
             },
             icon: Icon(Icons.arrow_back),),
         ),

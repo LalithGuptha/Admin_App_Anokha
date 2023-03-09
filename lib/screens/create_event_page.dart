@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-
+import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'listofevents.dart';
 
 class CreateEvent extends StatefulWidget {
@@ -18,6 +18,8 @@ class _CreateEventState extends State<CreateEvent> {
   TextEditingController _startTimeController = TextEditingController();
   TextEditingController _endTimeController = TextEditingController();
   TextEditingController _venueController = TextEditingController();
+  final CurrencyTextInputFormatter _formatter = CurrencyTextInputFormatter();
+  bool vis = false;
 
   @override
   Widget build(BuildContext context) {
@@ -144,12 +146,36 @@ class _CreateEventState extends State<CreateEvent> {
                           onChanged: (bool? value) {
                             setState(() {
                               _isPaid = value!;
+                              vis=!vis;
                             });
                           },
                         ),
                         const Text('Paid Event'),
                       ],
                     ),
+                    Visibility(
+                        visible: vis,
+                        child: TextFormField(
+                          validator: (value){
+                            if (value == null || value.isEmpty)
+                            {
+                              return 'Enter a password';
+                            }
+                          },
+                          inputFormatters:[
+                        CurrencyTextInputFormatter(
+                          decimalDigits: 0,
+                          symbol:'₹',
+                        ),],
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            hoverColor: HexColor("FF7F11"),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(16)),
+                              labelText: "Fee",
+                              hintText: "Fee"
+                          ),
+                        )),
                     const SizedBox(height: 40),
                     ElevatedButton(
                       onPressed: () {

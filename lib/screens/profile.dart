@@ -1,143 +1,117 @@
 import 'package:admin_app/screens/login.dart';
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
-import 'package:lottie/lottie.dart';
 
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+class userProf extends StatefulWidget {
+  const userProf({Key? key}) : super(key: key);
 
   @override
-  _ProfilePageState createState() => _ProfilePageState();
+  State<userProf> createState() => _userProfState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
-  String _username = 'Lallu';
-  String _email = 'lallu@example.com';
-  String _department = 'CSE';
-  final blue="002845";
-  final white="FFFFFC";
-  final grey="BEB7A4";
-  final orange="FF7F11";
-  final red="FF3F00";
-  var isEdit=false;
+class _userProfState extends State<userProf> {
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-        backgroundColor: HexColor(blue),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Username',
-              style: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            GestureDetector(
-              onTap: (){
-                setState(() {
-                  isEdit=true;
-                });
-              },
-              child: Row(
-                children: [
-                  Text(
-                    _username,
-                    style: const TextStyle(
-                      fontSize: 20.0,
-                    ),
-                  ),
-                  const SizedBox(width: 10,),
-                  IconButton(onPressed:(){
-                    setState(() {
-                      isEdit=true;
-                    });
-                  }, icon: Icon(Icons.edit)),
-                ],
-              ),
-            ),
-            if (isEdit)
-              TextFormField(
-                initialValue: _username,
-                onChanged: (value){
-                  setState(() {
-                    _username=value;
-                  });
-                },
-              ),
-
-
-            const SizedBox(height: 16.0),
-            const Text(
-              'Email',
-              style: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(
-              _email,
-              style: const TextStyle(
-                fontSize: 20.0,
-              ),
-            ),
-            const SizedBox(height: 16.0),
-            const Text(
-              'Department',
-              style: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(
-              _department,
-              style: const TextStyle(
-                fontSize: 20.0,
-              ),
-            ),
-            const SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () {
-                // TODO: change password functionality
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: HexColor(orange),
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10))
-                )
-              ),
-              child: const Text('Change Password',style: TextStyle(fontSize: 16),),
-            ),
-            const SizedBox(height: 16.0),
-            ElevatedButton(
+        backgroundColor:  Color(0xFFFFFFFC),
+        appBar: AppBar(
+          title: Text(
+            "Profile",
+            style: TextStyle(
+                color: Color(0xFFFFFFFC),
+                fontWeight: FontWeight.bold),
+          ),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            color: Color(0xFFFFFFFC),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          backgroundColor: Color(0xFF002845),
+          elevation: 0.0,
+          actions: [
+            IconButton(
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Login()));
+                MaterialPageRoute(builder: (context) => Login()));
               },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: HexColor(orange),
-                shape:const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10))
-                )
-              ),
-              child: const Text('Logout',style: TextStyle(fontSize: 16)),
+              icon: Icon(Icons.power_settings_new),
+              color: Color(0xFFFF3F00),
             ),
-            const SizedBox(height: 60,),
-            Container(
-              margin: const EdgeInsets.only(left: 80),
-              child:Lottie.asset(
-                'assets/animations/9404-lotus-animation.json',
-                fit: BoxFit.contain,)
-              ),
           ],
         ),
-      ),
-    );
+        body: Column(
+          children: [
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.006, left: MediaQuery.of(context).size.width * 0.09, right: MediaQuery.of(context).size.width * 0.09, bottom: MediaQuery.of(context).size.height * 0.05),
+                alignment: Alignment.center,
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.1,bottom:MediaQuery.of(context).size.height * 0.1),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                        color:Color(0xFF002845),
+                      ),
+                      // color: Colors.black,
+                    ),
+                    Positioned(
+                        left: MediaQuery.of(context).size.width * -0.095,
+                        child: Container(
+                          height: 50,
+                          width: 50,
+                          decoration: BoxDecoration(
+                              color:  Color(0xFFFFFFFC),
+                              shape: BoxShape.circle),
+                        )),
+                    Positioned(
+                      right: MediaQuery.of(context).size.width * -0.095,
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                            color:
+                             Color(0xFFFFFFFC),
+                            shape: BoxShape.circle),
+                      ),
+                    ),
+                    Positioned(
+                      top: MediaQuery.of(context).size.height * 0.15,
+                      child: Container(
+                        child: SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.65,
+                          child: Column(
+                            children: [
+                              // Text("hey"), for logo
+
+                              SizedBox(
+                                height: MediaQuery.of(context).size.height * 0.028,
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: Text(
+                                  "PASSPORT",
+                                  style: TextStyle(
+                                      fontSize: 30.0,
+                                      color:
+                                          Color(0xFFFFFFFC),
+                                      fontFamily: 'Roboto'),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ));
   }
 }

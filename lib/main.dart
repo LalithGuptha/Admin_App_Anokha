@@ -1,4 +1,5 @@
 import 'package:admin_app/screens/login.dart';
+import 'package:admin_app/screens/profile.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:admin_app/screens/splash_screen.dart';

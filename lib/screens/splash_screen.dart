@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
     controller = AnimationController(vsync: this,duration: Duration(seconds: 2));
-    sizeAnimation = Tween<double>(begin: 100.0, end: 200.0,).animate(CurvedAnimation(parent: controller, curve: Curves.elasticIn));
+    sizeAnimation = Tween<double>(begin: 200.0, end: 350.0,).animate(CurvedAnimation(parent: controller, curve: Curves.elasticIn));
     controller.forward();
     controller.addListener(() {
       setState(() {
@@ -52,14 +52,14 @@ class _SplashScreenState extends State<SplashScreen>
                   children: [
                     Align(
                       alignment: Alignment.center,
-                      child: Image.asset('assets/logo.png'),
+                      child: Image.asset('assets/anokha_2023_black_small.png'),
                     ),
                   ],
                 ),
               ),
               SizedBox(height: 48,),
-              AnimatedOpacity(opacity: customOpacity, duration: Duration(seconds: 2),
-                child:Text("Anokha",style: TextStyle(fontSize: 35,fontWeight: FontWeight.w700),) ,)
+              // AnimatedOpacity(opacity: customOpacity, duration: Duration(seconds: 2),
+              //   child:Text("Anokha",style: TextStyle(fontSize: 35,fontWeight: FontWeight.w700),) ,)
             ],
           )
         )

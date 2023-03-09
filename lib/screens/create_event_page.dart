@@ -18,11 +18,6 @@ class _CreateEventState extends State<CreateEvent> {
   TextEditingController _startTimeController = TextEditingController();
   TextEditingController _endTimeController = TextEditingController();
   TextEditingController _venueController = TextEditingController();
-  final blue = "002845";
-  final white = "FFFFFC";
-  final grey = "BEB7A4";
-  final orange = "FF7F11";
-  final red = "FF3F00";
 
   @override
   Widget build(BuildContext context) {
@@ -146,24 +141,12 @@ class _CreateEventState extends State<CreateEvent> {
                       children: [
                         Checkbox(
                           value: _isPaid,
-                          onChanged: (bool? value){
+                          onChanged: (bool? value) {
                             setState(() {
-                             _isPaid=value!;
+                              _isPaid = value!;
                             });
                           },
                         ),
-                        if (_isPaid)
-                          TextField(
-                            controller: _venueController,
-                            decoration: InputDecoration(
-                              icon: const Icon(Icons.location_on),
-                              labelText: 'Venue',
-                              hintText: 'Venue',
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(16),
-                              ),
-                            ),
-                          ),
                         const Text('Paid Event'),
                       ],
                     ),
@@ -177,8 +160,7 @@ class _CreateEventState extends State<CreateEvent> {
                         style: TextStyle(fontSize: 24),
                       ),
                       style: ElevatedButton.styleFrom(
-                        minimumSize: const Size(double.infinity, 50),
-                        backgroundColor: HexColor("FF7F11"),
+                        minimumSize: const Size(double.infinity, 50), backgroundColor: HexColor("FF7F11"),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16),
                         ),
@@ -193,7 +175,6 @@ class _CreateEventState extends State<CreateEvent> {
       ),
     );
   }
-
   void _showEventCreatedDialog(BuildContext context) {
     showDialog(
       context: context,
@@ -205,10 +186,8 @@ class _CreateEventState extends State<CreateEvent> {
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const Manageevent()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Manageevent()));
               },
               child: Text('View Created Events'),
             ),

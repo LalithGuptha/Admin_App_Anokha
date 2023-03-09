@@ -39,6 +39,8 @@ dependencies:
   hexcolor: ^3.0.1
   animated_splash_screen: ^1.3.0
   http: ^0.13.5
+  giffy_dialog: ^1.8.0
+  flutter_beautiful_popup: ^1.7.0
 
 dev_dependencies:
   flutter_test:

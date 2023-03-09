@@ -19,7 +19,11 @@ class _ButtonContainerState extends State<ButtonContainer> {
       'text': 'Content for Day 3',
     },
   ];
-
+  final blue="002845";
+  final white="FFFFFC";
+  final grey="BEB7A4";
+  final orange="FF7F11";
+  final red="FF3F00";
   void _onButtonPressed(int index) {
     setState(() {
       _selectedIndex = index;

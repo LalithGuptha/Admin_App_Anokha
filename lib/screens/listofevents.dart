@@ -4,6 +4,7 @@ import 'package:lottie/lottie.dart';
 import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'create_event_page.dart';
 
 class Manageevent extends StatefulWidget{
   const Manageevent({Key? key}): super(key: key);
@@ -13,56 +14,104 @@ class Manageevent extends StatefulWidget{
 
 Widget card (list, BuildContext context){
   String date = list["date"];
-  return Card(
-    margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
-    elevation: 8,
-    shadowColor: HexColor("BEB7A4"),
+  final blue="002845";
+  final white="FFFFFC";
+  final grey="BEB7A4";
+  final orange="FF7F11";
+  final red="FF3F00";
+  return GestureDetector(
+    onTap:(){
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return Expanded(
+            child: AlertDialog(
+              alignment: Alignment.center,
+              title: Center(child: Text(list["name"])),
+              content: Text(list["description"]),
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(16.0))
+              ),
+              actionsAlignment: MainAxisAlignment.spaceAround,
+              actions: [
 
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(16),
-      //side: BorderSide(width: 3)
-    ),
-    child: Container(
-      margin: EdgeInsets.all(8),
-      child: Row(
-        children: [
-          Container(
-            height: 100,
-            width: 80,
-            child: ClipRRect(
-              child: Lottie.asset('assets/animations/ai.json'),
-              //borderRadius: BorderRadius.all(Radius.circular(16)),
-            ),
-          ),
-          SizedBox(width: 8,),
-          Container(
-            margin: EdgeInsets.only(left: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                    children:[
-                      Text(date.split('T')[0],),
-                      SizedBox(width:40 ,),
-                      //Text(list["startTime"])
-                    ]
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text('Edit'),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: HexColor(blue),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(16))
+                  ),
+                  ),
                 ),
-                SizedBox(height: 10,),
-                Text(list["name"],style: TextStyle(fontSize:24,fontWeight: FontWeight.w500),),
-                SizedBox(height: 10,),
-                Row(
-                  children: [
-                    Icon(Icons.location_pin,color: HexColor("FF3F00"),),
-                    SizedBox(width: 8,),
-                    Text(list["venue"])
-                  ],
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text('Registered Users'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: HexColor(blue),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(16))
+                    ),
+                  ),
                 ),
+
               ],
             ),
-          ),
-        ],
+          );
+        },
+      );
+
+    },
+    child: Card(
+      margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
+      elevation: 8,
+      shadowColor: HexColor("BEB7A4"),
+
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+        //side: BorderSide(width: 3)
       ),
-    )
+      child: Container(
+        margin: EdgeInsets.all(8),
+        child: Row(
+          children: [
+            Container(
+              height: 100,
+              width: 80,
+              child: ClipRRect(
+                child: Lottie.asset('assets/animations/ai.json'),
+                //borderRadius: BorderRadius.all(Radius.circular(16)),
+              ),
+            ),
+            SizedBox(width: 8,),
+            Container(
+              margin: EdgeInsets.only(left: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                      children:[
+                        Text(date.split('T')[0],),
+                        SizedBox(width:40 ,),
+                        //Text(list["startTime"])
+                      ]
+                  ),
+                  SizedBox(height: 10,),
+                  Text(list["name"],style: TextStyle(fontSize:24,fontWeight: FontWeight.w500),),
+                  SizedBox(height: 10,),
+                  Row(
+                    children: [
+                      Icon(Icons.location_pin,color: HexColor("FF3F00"),),
+                      SizedBox(width: 8,),
+                      Text(list["venue"])
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      )
+    ),
   );
 }
 class _Manageevent extends State<Manageevent> {
@@ -71,7 +120,7 @@ class _Manageevent extends State<Manageevent> {
   //var regcount=[10,20,30];
   Future<List> getData() async {
     final response = await http.get(
-        Uri.parse("http://192.168.193.228:3000/api/events/all"));
+        Uri.parse("http://18.183.52.0:3060/api/events/all"));
 
     return json.decode(response.body);
   }

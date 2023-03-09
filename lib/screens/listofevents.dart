@@ -1,3 +1,4 @@
+import 'package:admin_app/screens/registeredusers.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:lottie/lottie.dart';
@@ -45,7 +46,10 @@ Widget card (list, BuildContext context){
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const Registeredusers()));
+                  },
                   child: Text('Registered Users'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: HexColor(blue),

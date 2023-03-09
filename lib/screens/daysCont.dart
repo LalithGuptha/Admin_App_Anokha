@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class ButtonContainer extends StatefulWidget {
   const ButtonContainer({Key? key}) : super(key: key);
@@ -36,7 +37,7 @@ class _ButtonContainerState extends State<ButtonContainer> {
         onPressed: () => _onButtonPressed(index),
         style: TextButton.styleFrom(
           backgroundColor:
-          _selectedIndex == index ? Colors.blue : Colors.grey,
+          _selectedIndex == index ? HexColor(orange) : HexColor(grey),
           padding: const EdgeInsets.symmetric(vertical: 12),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),

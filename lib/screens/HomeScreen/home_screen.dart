@@ -4,7 +4,7 @@ import 'package:admin_app/screens/list_of_events.dart';
 import 'package:admin_app/screens/registered_users.dart';
 import 'package:flutter/material.dart';
 //import 'package:hexcolor/hexcolor.dart';
-import 'package:admin_app/screens/daysCont.dart';
+import 'package:admin_app/screens/HomeScreen/daysCont.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:admin_app/screens/create_event_page.dart';
 import 'package:admin_app/screens/profile.dart';
@@ -62,10 +62,6 @@ class _HomeScreen extends State<HomeScreen> {
               Text("Pick a Day",style: txtTheme.bodyLarge,),
               ButtonContainer(),
               space,
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Text("Create an Event",style: txtTheme.headlineLarge,),
-              )
 
             ],
           ),

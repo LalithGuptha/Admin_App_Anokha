@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-
+import 'package:admin_app/screens/slidableCards.dart';
 class ButtonContainer extends StatefulWidget {
   const ButtonContainer({Key? key}) : super(key: key);
 
@@ -13,12 +13,20 @@ class _ButtonContainerState extends State<ButtonContainer> {
 
   final List<Map<String, dynamic>> _contents = [
     {'text': 'Content for Day 1',
+      'card': ['Card 1 for Day 1','Card 2 for Day 1','Card 3 for Day 1','Card 4 for Day 1'],
     },
     { 'text': 'Content for Day 2',
+      'card': ['Card 1 for Day 2','Card 2 for Day 2','Card 2 for Day 2','Card 4 for Day 2'],
     },
     {
       'text': 'Content for Day 3',
+      'card': ['Card 1 for Day 3','Card 2 for Day 3','Card 3 for Day 3','Card 4 for Day 3'],
     },
+];
+final List<List<String>> _cards = [
+    ['assets/temp/anokha20_5.png','assets/temp/anokha20_1.png','assets/temp/anokha20_2.png','assets/temp/anokha20_3.png'],
+    ['assets/temp/anokha20_4.png','assets/temp/anokha20_3.png','assets/temp/anokha20_2.png','assets/temp/anokha20_1.png'],
+    ['assets/temp/anokha20_5.png','assets/temp/anokha20_2.png','assets/temp/anokha20_3.png','assets/temp/anokha20_5.png'],
   ];
   final blue="002845";
   final white="FFFFFC";
@@ -56,32 +64,27 @@ class _ButtonContainerState extends State<ButtonContainer> {
 
   Widget _buildContent() {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       decoration: BoxDecoration(
-        color: Colors.white,
         borderRadius: BorderRadius.circular(8.0),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            spreadRadius: 2,
-            blurRadius: 4,
-            offset: Offset(0, 2),
-          ),
-        ],
+        // boxShadow: [
+        //   BoxShadow(
+        //     color: Colors.grey.withOpacity(0.3),
+        //     spreadRadius: 2,
+        //     blurRadius: 4,
+        //     offset: Offset(0, 2),
+        //   ),
+        // ],
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            _contents[_selectedIndex]['text'],
-            style: TextStyle(fontSize: 18),
-          ),
+          // Text(
+          //   _contents[_selectedIndex]['text'],
+          //   style: TextStyle(fontSize: 18),
+          // ),
           SizedBox(height: 16),
-          Image.asset(
-            'assets/logo.png',
-            height: 150,
-            fit: BoxFit.cover,
-          ),
+          AutomaticSlidableCardsList(items: _cards[_selectedIndex]),
         ],
       ),
     );

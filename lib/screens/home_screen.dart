@@ -62,10 +62,6 @@ class _HomeScreen extends State<HomeScreen> {
               Text("Pick a Day",style: txtTheme.bodyLarge,),
               ButtonContainer(),
               space,
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Text("Create an Event",style: txtTheme.headlineLarge,),
-              )
 
             ],
           ),

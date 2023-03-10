@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:admin_app/screens/listofevents.dart';
-import 'package:admin_app/screens/registeredusers.dart';
+import 'package:admin_app/screens/list_of_events.dart';
+import 'package:admin_app/screens/registered_users.dart';
 import 'package:flutter/material.dart';
 //import 'package:hexcolor/hexcolor.dart';
 import 'package:admin_app/screens/daysCont.dart';

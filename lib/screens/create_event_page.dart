@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
-import 'listofevents.dart';
+import 'list_of_events.dart';
 
 class CreateEvent extends StatefulWidget {
   const CreateEvent({Key? key}) : super(key: key);

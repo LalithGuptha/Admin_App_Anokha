@@ -1,8 +1,13 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 import 'dart:async';
+
+import 'package:hexcolor/hexcolor.dart';
+
 class AutomaticSlidableCardsList extends StatefulWidget {
-  final List<String> items;
+  final List<Map<String, String>> items;
 
   AutomaticSlidableCardsList({required this.items});
 
@@ -11,11 +16,17 @@ class AutomaticSlidableCardsList extends StatefulWidget {
       _AutomaticSlidableCardsListState();
 }
 
-class _AutomaticSlidableCardsListState extends State<AutomaticSlidableCardsList> {
+class _AutomaticSlidableCardsListState
+    extends State<AutomaticSlidableCardsList> {
   int _currentPage = 0;
   final PageController _pageController =
-  PageController(viewportFraction: 0.8, keepPage: false);
+      PageController(viewportFraction: 0.8, keepPage: false);
   late Timer _timer;
+  final blue = "002845";
+  final white = "FFFFFC";
+  final grey = "BEB7A4";
+  final orange = "FF7F11";
+  final red = "FF3F00";
 
   @override
   void initState() {
@@ -30,7 +41,8 @@ class _AutomaticSlidableCardsListState extends State<AutomaticSlidableCardsList>
     });
 
     _timer = Timer.periodic(Duration(seconds: 5), (Timer timer) {
-      final int nextIndex = _currentPage == widget.items.length - 1 ? 0 : _currentPage + 1;
+      final int nextIndex =
+          _currentPage == widget.items.length - 1 ? 0 : _currentPage + 1;
       _pageController.animateToPage(
         nextIndex,
         duration: Duration(milliseconds: 500),
@@ -60,18 +72,37 @@ class _AutomaticSlidableCardsListState extends State<AutomaticSlidableCardsList>
     );
   }
 
-  Widget _buildCard(String text, bool active) {
+  Widget _buildCard(Map<String, String> text, bool active) {
     return Card(
       margin: EdgeInsets.symmetric(horizontal: 10),
       // decoration: BoxDecoration(
       //   // color: active ? Colors.blue : Colors.grey,
       //   borderRadius: BorderRadius.circular(10),
       // ),
-      child: FittedBox(
-        child: Image.asset(text),
-        fit: BoxFit.fill,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      color: Colors.white70,
+      child: Column(
+        children: [
+          Container(
+            height: 80,
+            width: double.infinity,
+            child: FittedBox(
+              child: Image.asset(text['image']!),
+              fit: BoxFit.fill,
+            ),
+          ),
+          Container(
+            height: 40,
+            width: double.infinity,
+            child: Center(
+              child: Text(
+                text['name']!,
+                style: (TextStyle(fontWeight: FontWeight.w700, fontSize: 20)),
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
 }
-

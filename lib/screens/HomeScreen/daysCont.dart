@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:admin_app/screens/slidableCards.dart';
+import 'package:admin_app/screens/HomeScreen/slidableCards.dart';
 class ButtonContainer extends StatefulWidget {
   const ButtonContainer({Key? key}) : super(key: key);
 
@@ -23,10 +23,34 @@ class _ButtonContainerState extends State<ButtonContainer> {
       'card': ['Card 1 for Day 3','Card 2 for Day 3','Card 3 for Day 3','Card 4 for Day 3'],
     },
 ];
-final List<List<String>> _cards = [
-    ['assets/temp/anokha20_5.png','assets/temp/anokha20_1.png','assets/temp/anokha20_2.png','assets/temp/anokha20_3.png'],
-    ['assets/temp/anokha20_4.png','assets/temp/anokha20_3.png','assets/temp/anokha20_2.png','assets/temp/anokha20_1.png'],
-    ['assets/temp/anokha20_5.png','assets/temp/anokha20_2.png','assets/temp/anokha20_3.png','assets/temp/anokha20_5.png'],
+final List<List<Map<String,String>>> _cards = [
+    [
+      {'image':'assets/temp/anokha20_5.png',
+        'name':'Event Name 5'},
+      {'image':'assets/temp/anokha20_1.png',
+      'name':'Event Name 1'},
+      {'image':'assets/temp/anokha20_2.png',
+      'name':'Event Name 2'},
+      {'image':'assets/temp/anokha20_3.png',
+      'name': 'Event Name 3'}],
+    [
+      {'image':'assets/temp/anokha20_4.png',
+      'name':'Event Name 4'},
+      {'image':'assets/temp/anokha20_3.png',
+       'name': 'Event Name 3'},
+      {'image':'assets/temp/anokha20_2.png',
+        'name':'Event Name 2'},
+      {'image':'assets/temp/anokha20_1.png',
+        'name':'Event Name 1'}],
+    [
+      {'image':'assets/temp/anokha20_5.png',
+        'name':'Event Name 5'},
+      {'image':'assets/temp/anokha20_2.png',
+      'name':'Event Name 2'},
+      {'image':'assets/temp/anokha20_3.png',
+      'name': 'Event Name 3'},
+      {'image':'assets/temp/anokha20_5.png',
+        'name':'Event Name 5'}],
   ];
   final blue="002845";
   final white="FFFFFC";
@@ -64,7 +88,7 @@ final List<List<String>> _cards = [
 
   Widget _buildContent() {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.0),
         // boxShadow: [
@@ -83,7 +107,7 @@ final List<List<String>> _cards = [
           //   _contents[_selectedIndex]['text'],
           //   style: TextStyle(fontSize: 18),
           // ),
-          SizedBox(height: 16),
+          //SizedBox(height: 16),
           AutomaticSlidableCardsList(items: _cards[_selectedIndex]),
         ],
       ),

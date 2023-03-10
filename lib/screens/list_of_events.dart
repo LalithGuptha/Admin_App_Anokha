@@ -1,4 +1,4 @@
-import 'package:admin_app/screens/home_screen.dart';
+import 'package:admin_app/screens/HomeScreen/home_screen.dart';
 import 'package:admin_app/screens/registered_users.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
